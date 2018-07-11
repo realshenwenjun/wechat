@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="never">
+
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href="../Public/admin/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="../Public/admin/css/font-awesome.css?v=4.4.0" rel="stylesheet">
+    <link href="../Public/admin/css/plugins/iCheck/custom.css" rel="stylesheet">
+    <link href="../Public/admin/css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+    <link href="../Public/admin/css/animate.css" rel="stylesheet">
+    <link href="../Public/admin/css/style.css?v=4.1.0" rel="stylesheet">
+
+</head>
+
+<body class="gray-bg">
+
+<div class="wrapper wrapper-content animated fadeInUp">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="ibox">
+                <div class="ibox-title">
+                    <div class="col-md-1">
+                        <button type="button" id="go_back"  class="btn btn-white btn-sm"><i class="fa fa-refresh"></i> 返回</button>
+                    </div>
+                    <div class="ibox-tools">
+                        <a href="#" class="btn btn-primary btn-xs" id="save">保存</a>
+                    </div>
+                </div>
+                <div class="ibox-content" style="border-style:none none none;">
+                    <form method="get" class="form-horizontal">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">类型
+                            </label>
+                            <div class="col-sm-10">
+                                <div class="radio i-checks">
+                                    <label><input type="radio" checked="" value="view" name="type" style="margin-top: 0;"> <i></i> 网页</label>
+                                </div>
+                                <div class="radio i-checks">
+                                    <label><input type="radio"  value="media_id" name="type" style="margin-top: 0;"> <i></i> 消息</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">名称</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="name" class="form-control">
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group hide" id="key_div">
+                            <label class="col-sm-2 control-label">Key</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="key" class="form-control">
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group" id="url_div">
+                            <label class="col-sm-2 control-label">URL</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="url" placeholder="网页链接" class="form-control">
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group hide" id="media_id_div">
+                            <label class="col-sm-2 control-label">素材</label>
+                            <div class="col-sm-10">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" readonly name="media_id" id="media_id"> <span class="input-group-btn"> <button type="button" id="select_media" class="btn btn-primary" data-toggle="modal" data-target="#myModal5">选择
+                                </button> </span>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal inmodal fade" id="myModal5" tabindex="-1" role="dialog"  aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title">选择素材</h4>
+                <small class="font-bold"></small>
+            </div>
+            <div class="modal-body">
+                <div class="ibox-content">
+                    <div class="row">
+                    <div class="col-sm-12">
+                        <div class="panel blank-panel">
+                            <div class="panel-heading">
+                                <div class="panel-options">
+
+                                    <ul class="nav nav-tabs media-type">
+                                        <li class="active" type="news"><a data-toggle="tab" href="tabs_panels.html#tab-4"><i class="fa fa-laptop"></i>图文</a>
+                                        </li>
+                                        <li class="" type="image"><a data-toggle="tab" href="tabs_panels.html#tab-5"><i class="fa fa-desktop"></i>图片</a>
+                                        </li>
+                                        <li class=""><a data-toggle="tab" href="tabs_panels.html#tab-6"><i class="fa fa-signal"></i>音频</a>
+                                        </li>
+                                        <li class=""><a data-toggle="tab" href="tabs_panels.html#tab-7"><i class="fa fa-bar-chart-o"></i>视频</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="panel-body">
+                                <div class="tab-content">
+                                    <div id="tab-4" class="tab-pane active">
+                                        <strong></strong>
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <div class="ibox float-e-margins">
+                                                    <div class="ibox-content" id="news_content">
+
+                                                    </div>
+                                                    <div class="hr-line-dashed"></div>
+                                                    <div class="text-center">
+                                                        <div class="btn-group" id="news_tool" totalpage="">
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    <div id="tab-5" class="tab-pane">
+                                        <strong></strong>
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <div class="ibox float-e-margins">
+                                                    <div class="ibox-content" id="image_content">
+                                                    </div>
+                                                    <div class="hr-line-dashed"></div>
+                                                    <div class="text-center">
+                                                        <div class="btn-group" id="image_tool" totalpage="">
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div id="tab-6" class="tab-pane">
+                                        <strong>敬请期待</strong>
+                                    </div>
+                                    <div id="tab-7" class="tab-pane">
+                                        <strong>敬请期待</strong>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-white" data-dismiss="modal" id="close_pop">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 全局js -->
+<script src="../Public/admin/js/jquery.min.js?v=2.1.4"></script>
+<script src="../Public/admin/js/bootstrap.min.js?v=3.3.6"></script>
+
+
+<!-- 自定义js -->
+<script src="../Public/admin/js/content.js?v=1.0.0"></script>
+<script src="../Public/admin/js/plugins/sweetalert/sweetalert.min.js"></script>
+
+<script>
+    var pageSize = 8;
+    function clickMediaId(media_id){
+        $("#media_id").val(media_id);
+        $("#close_pop").click();
+    }
+    function pageButtonEvent(e){
+        $(e).find("button").unbind().on("click",function(){
+            var currentPage = parseInt($(this).parent().find(" > button.active").text());
+            if($(this).hasClass("page-left")){
+                if (currentPage > 1){
+                    getMediaPage(currentPage - 1,pageSize,"");
+                }
+            }else if($(this).hasClass("page-right")){
+                if (currentPage < $(e).attr("totalpage")){
+                    getMediaPage(currentPage + 1,pageSize,"");
+                }
+            }else{
+                if(!$(this).hasClass("active")){
+                    getMediaPage($(this).text(),pageSize,"");
+                }
+            }
+        });
+    }
+    function getMediaPage(page,count,type){
+        if(type == "")
+            type = $(".media-type").find(" > .active").attr("type");
+        $.ajax({
+            type : "POST",
+            url : "batchget_material",
+            dataType : "json",
+            data : {type:type,offset:(page - 1)*count,count:count},
+            success : function(data) {
+                if (data.status == 0) {
+                    $("#"+type+"_content").html("");
+                    $.each(data.data.item,function(i){
+                        var item = data.data.item[i];
+                        var con = '';
+                        if (type == "news"){
+                            con += '<a style="padding: 2px;" class="fancybox" href="javascript:clickMediaId(&quot;'+item.media_id+'&quot;);" title="'+item.content.news_item[0].title+'">';
+                            con += '<img alt="'+item.content.news_item[0].title+'" src="http://read.html5.qq.com/image?src=forum&q=5&r=0&imgflag=7&imageUrl='+item.content.news_item[0].thumb_url+'" />';
+                        }
+                        else if(type == "image"){
+                            con += '<a style="padding: 2px;" class="fancybox" href="javascript:clickMediaId(&quot;'+item.media_id+'&quot;);" title="'+item.name+'">';
+                            con += '<img alt="'+item.name+'" src="http://read.html5.qq.com/image?src=forum&q=5&r=0&imgflag=7&imageUrl='+item.url+'" />';
+                        }
+                        con += '</a>';
+                        $("#"+type+"_content").append(con);
+                    });
+                    //设置分页信息
+                    $("#"+type+"_tool").html("");
+                    var page = data.data.page;
+                    var html = '<button class="btn btn-white page-left" type="button"><i class="fa fa-chevron-left"></i></button>';
+                    html += makePageButton(page.currentPage,page.totalPage);
+                    html += '<button class="btn btn-white page-right" type="button"><i class="fa fa-chevron-right"></i></button>';
+
+                    $("#"+type+"_tool").html(html);
+                    $("#"+type+"_tool").attr("totalpage",page.totalPage);
+                    pageButtonEvent($("#"+type+"_tool"));
+                }else{
+                    swal({
+                        title: "",
+                        text: data.info,
+                        type: "warning"
+                    });
+                }
+            }
+        });
+    }
+    $(document).ready(function(){
+        $("#go_back").unbind().on("click",function(){
+            window.history.go(-1);
+        });
+        $("input[name='type']").unbind().on("click",function(){
+            if ($(this).val() == "view") {
+                $("#url_div").removeClass("hide");
+                $("#key_div").addClass("hide");
+                $("#media_id_div").addClass("hide");
+            }else  if ($(this).val() == "media_id"){
+                $("#media_id_div").removeClass("hide");
+                $("#key_div").addClass("hide");
+                $("#url_div").addClass("hide");
+            }
+        });
+        $("#save").unbind().on("click",function(){
+            var type = $("input[name='type']:checked").val();
+            var name = $("input[name='name']").val();
+            var url = $("input[name='url']").val();
+            var media_id = $("#media_id").val();
+            if(name == ""){
+                swal({
+                    title: "",
+                    text: "名称不能为空",
+                    type: "warning"
+                });
+                return false;
+            }
+
+            if(type == "view"){
+                if(url == ""){
+                    swal({
+                        title: "",
+                        text: "URL不能为空",
+                        type: "warning"
+                    });
+                    return false;
+                }
+            }
+            if(type == "media_id"){
+                if(media_id == ""){
+                    swal({
+                        title: "",
+                        text: "素材不能为空",
+                        type: "warning"
+                    });
+                    return false;
+                }
+            }
+            swal({
+                title: "确定保存？",
+                text: "",
+                type: "success",
+                showCancelButton: true,
+                confirmButtonText: "确定",
+                cancelButtonText: "取消",
+                closeOnConfirm: false
+            }, function () {
+                $.ajax({
+                    type : "POST",
+                    url : "add_menu",
+                    dataType : "json",
+                    data : {pid:GetQueryString("mid"),type:type,name:$("input[name='name']").val(),key:$("input[name='key']").val(),url:url,media_id:media_id},
+                    success : function(data) {
+                        if (data.status == 0) {
+                            window.location.href = "customerMenu.html";
+                        }else{
+                            swal({
+                                title: "",
+                                text: data.info,
+                                type: "warning"
+                            });
+                        }
+                    }
+                });
+            });
+
+        });
+        $("#select_media").unbind().on("click",function(){
+            getMediaPage(1,pageSize,"news");
+        });
+        $("ul.media-type").find(" > li").unbind().on("click",function(){
+            var type = $(this).attr("type");
+            getMediaPage(1,pageSize,type);
+        });
+    });
+
+</script>
+
+</body>
+</html>
