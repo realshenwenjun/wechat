@@ -2,20 +2,14 @@
 
 class AdminAction extends Action
 {
-
-    private static $sendToWxUrl = "";
-    private static $template_url = "https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=";
-    private static $menu_create_url = "https://api.weixin.qq.com/cgi-bin/menu/create?access_token=";
-    private static $batchget_material_url = "https://api.weixin.qq.com/cgi-bin/material/batchget_material?access_token=";
-
     //初始化
     public function _initialize()
     {
-        self::$sendToWxUrl = "http://" . $_SERVER['HTTP_HOST'] . "/wx.php/Wx/sendMsg";//给微信服务器发送消息的接口
         //判断用户是否已经登录
         $requestUrl = $_SERVER['REQUEST_URI'];
+        logger($requestUrl);
         $whiteName = array(
-            //以下为需要配置的
+            //以下为需要配置的白名单
             'login.html',
             'loginForm',
             'valid'
